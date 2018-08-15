@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>SpecificShipCell.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5004</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccs.cs5004.models.cell</a> &gt; <span class="el_source">SpecificShipCell.java</span></div><h1>SpecificShipCell.java</h1><pre class="source lang-java linenums">package edu.neu.ccs.cs5004.models.cell;
+
+import edu.neu.ccs.cs5004.models.AttackResult;
+import edu.neu.ccs.cs5004.models.Cell;
+import edu.neu.ccs.cs5004.models.CellObserver;
+import edu.neu.ccs.cs5004.models.Ship;
+import edu.neu.ccs.cs5004.models.ShipCell;
+import edu.neu.ccs.cs5004.models.attackresult.Hit;
+import edu.neu.ccs.cs5004.models.attackresult.Miss;
+import edu.neu.ccs.cs5004.models.attackresult.Sunk;
+
+import java.util.Objects;
+
+
+/**
+ * Represents a SpecificShipCell.
+ *
+ * @author stephenxi
+ */
+public class SpecificShipCell extends AbstractShipCell implements CellObserver {
+
+  private Ship ship;
+
+  /**
+   * Create a new SpecificShipCell.
+   *
+   * @param isHit  if the SpecificShipCell was or was not hit
+   * @param isSunk if the SpecificShipCell is sunk
+   * @param ship   the ship of SpecificShipCell
+   */
+  public SpecificShipCell(Boolean isHit, Boolean isSunk, Ship ship) {
+<span class="fc" id="L32">    super(isHit, isSunk);</span>
+<span class="fc" id="L33">    this.ship = ship;</span>
+<span class="fc" id="L34">  }</span>
+
+  /**
+   * Getter for property 'ship'.
+   *
+   * @return Value for property 'ship'.
+   */
+  public Ship getShip() {
+<span class="fc" id="L42">    return this.ship;</span>
+  }
+
+  /**
+   * Returns an attack result.
+   *
+   * @return an attack result
+   */
+  public AttackResult getAttackResult() {
+<span class="fc bfc" id="L51" title="All 2 branches covered.">    if (ship.isSunk()) {</span>
+<span class="fc" id="L52">      return new Sunk();</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">    } else if (this.viewIsHit()) {</span>
+<span class="fc" id="L54">      return new Hit();</span>
+    } else {
+<span class="fc" id="L56">      return new Miss();</span>
+    }
+  }
+
+  /**
+   * Returns an attacked SpecificShipCell.
+   *
+   * @return an attacked SpecificShipCell
+   */
+  @Override
+  public Cell attackCell() {
+
+<span class="fc" id="L68">    this.ship = this.ship.hitShip();</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">    if (this.ship.isSunk()) {</span>
+<span class="fc" id="L70">      return new SpecificShipCell(true, true, this.ship);</span>
+    } else {
+<span class="fc" id="L72">      return new SpecificShipCell(true, false, this.ship);</span>
+    }
+  }
+
+  /**
+   * Returns a new ship cell marked as sunk.
+   *
+   * @return a new ship cell marked as sunk
+   */
+  @Override
+  public ShipCell markAsSunk() {
+<span class="fc" id="L83">    this.isSunk = true;</span>
+
+<span class="fc" id="L85">    return this;</span>
+  }
+
+  @Override
+  public Ship viewShip() {
+<span class="fc" id="L90">    return this.getShip();</span>
+  }
+
+  /**
+   * {@inheritDoc}.
+   */
+  @Override
+  public boolean equals(Object obj) {
+<span class="fc bfc" id="L98" title="All 2 branches covered.">    if (this == obj) {</span>
+<span class="fc" id="L99">      return true;</span>
+    }
+<span class="fc bfc" id="L101" title="All 4 branches covered.">    if (obj == null || getClass() != obj.getClass()) {</span>
+<span class="fc" id="L102">      return false;</span>
+    }
+<span class="fc bfc" id="L104" title="All 2 branches covered.">    if (!super.equals(obj)) {</span>
+<span class="fc" id="L105">      return false;</span>
+    }
+<span class="fc" id="L107">    SpecificShipCell that = (SpecificShipCell) obj;</span>
+<span class="fc" id="L108">    return Objects.equals(ship, that.ship);</span>
+  }
+
+  /**
+   * {@inheritDoc}.
+   */
+  @Override
+  public int hashCode() {
+
+<span class="fc" id="L117">    return Objects.hash(super.hashCode(), ship);</span>
+  }
+
+  /**
+   * {@inheritDoc}.
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L125">    return &quot;SpecificShipCell{&quot;</span>
+        + &quot;ship=&quot; + ship
+<span class="fc" id="L127">        + &quot;, isSunk=&quot; + viewIsSunk()</span>
+<span class="fc" id="L128">        + &quot;, isHit=&quot; + viewIsHit()</span>
+        + '}';
+  }
+
+  @Override
+  public void update(Ship observable) {
+<span class="fc" id="L134">    this.isSunk = true;</span>
+<span class="fc" id="L135">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

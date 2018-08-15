@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.11.2">
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/Map.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/Istrategy.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/Iplacement.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/Ship.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/attackresult/Sunk.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/attackresult/Miss.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/attackresult/Hit.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/game/Agame.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/game/DebugMode.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/game/GameMode.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/AttackResult.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/cell/EnemyShipCell.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/cell/SpecificShipCell.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/cell/AbstractWaterCell.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/cell/AbstractCell.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/cell/GapCell.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/cell/OpenSeaCell.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/cell/AbstractShipCell.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/map/BattleField.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/map/Row.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/map/Column.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/Game.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/ShipCell.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/CellObserver.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/WaterCell.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/ship/Submarine.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/ship/Cruiser.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/ship/AbstractShip.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/ship/Destroyer.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/ship/Battleship.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/Cell.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/Iplayer.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/player/ComputerPlayer.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/player/Player.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/player/HumanPlayer.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/strategy/RandomStrategy.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/strategy/Strategy.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/strategy/UserStrategy.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/strategy/SmartStrategy.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/placement/RandomPlacement.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/placement/Placement.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/models/placement/UserPlacement.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/controller/GameController.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/controller/GameStart.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/view/Message.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/view/MyConsolePrinter.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment5-part2-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/view/ConsolePrinter.java">
+</file>
+</checkstyle>

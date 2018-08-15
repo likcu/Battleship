@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BattleField.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5004</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccs.cs5004.models.map</a> &gt; <span class="el_source">BattleField.java</span></div><h1>BattleField.java</h1><pre class="source lang-java linenums">package edu.neu.ccs.cs5004.models.map;
+
+import edu.neu.ccs.cs5004.models.Cell;
+import edu.neu.ccs.cs5004.models.Map;
+import edu.neu.ccs.cs5004.models.cell.OpenSeaCell;
+import edu.neu.ccs.cs5004.models.cell.SpecificShipCell;
+import edu.neu.ccs.cs5004.view.ConsolePrinter;
+
+import java.util.Arrays;
+
+
+/**
+ * Represents a battle field.
+ */
+public class BattleField implements Map {
+
+<span class="fc" id="L17">  public static final Integer LENGTH = 10;</span>
+  private Cell[][] cell;
+
+  /**
+   * Creates a battle field.
+   *
+   * @param cell the cell array in the battle field
+   */
+<span class="fc" id="L25">  public BattleField(Cell[][] cell) {</span>
+<span class="fc" id="L26">    this.cell = new Cell[LENGTH][LENGTH];</span>
+
+<span class="fc bfc" id="L28" title="All 2 branches covered.">    for (int i = 0; i &lt; LENGTH; i++) {</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">      for (int j = 0; j &lt; LENGTH; j++) {</span>
+<span class="fc" id="L30">        this.cell[i][j] = cell[i][j];</span>
+      }
+    }
+<span class="fc" id="L33">  }</span>
+
+  /**
+   * Creates a battle field.
+   */
+<span class="fc" id="L38">  public BattleField() {</span>
+<span class="fc" id="L39">    cell = new Cell[LENGTH][LENGTH];</span>
+
+<span class="fc bfc" id="L41" title="All 2 branches covered.">    for (int i = 0; i &lt; LENGTH; i++) {</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">      for (int j = 0; j &lt; LENGTH; j++) {</span>
+<span class="fc" id="L43">        this.cell[i][j] = new OpenSeaCell(false);</span>
+      }
+    }
+<span class="fc" id="L46">  }</span>
+
+  /**
+   * Getter for property 'cell'.
+   *
+   * @return Value for property 'cell'.
+   */
+  public Cell[][] getCell() {
+<span class="fc" id="L54">    Cell[][] cells = new Cell[LENGTH][LENGTH];</span>
+
+<span class="fc bfc" id="L56" title="All 2 branches covered.">    for (int i = 0; i &lt; LENGTH; i++) {</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">      for (int j = 0; j &lt; LENGTH; j++) {</span>
+<span class="fc" id="L58">        cells[i][j] = this.cell[i][j];</span>
+      }
+    }
+<span class="fc" id="L61">    return cells;</span>
+  }
+
+  /**
+   * Get the array of cells.
+   *
+   * @return the array of cells
+   */
+  public Cell[][] viewCell() {
+<span class="fc" id="L70">    return this.getCell();</span>
+  }
+
+  /**
+   * Returns an occupied cell.
+   *
+   * @param row    the row of the map
+   * @param column the column of the map
+   * @return an occupied cell.
+   */
+  public Cell getOccupiedCell(Row row, Column column) {
+<span class="fc" id="L81">    return this.cell[row.ordinal()][column.ordinal()];</span>
+  }
+
+  /**
+   * Check if the map still has shipCell or not.
+   *
+   * @return true there is at least one shipCell, false otherwise
+   */
+  public Boolean containsHit() {
+
+<span class="fc bfc" id="L91" title="All 2 branches covered.">    for (int i = 0; i &lt; LENGTH; i++) {</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">      for (int j = 0; j &lt; LENGTH; j++) {</span>
+<span class="pc bpc" id="L93" title="1 of 4 branches missed.">        if (this.cell[i][j] instanceof SpecificShipCell &amp;&amp; this.cell[i][j].viewIsHit()</span>
+<span class="pc bpc" id="L94" title="1 of 2 branches missed.">            &amp;&amp; !this.cell[i][j].viewIsSunk()) {</span>
+<span class="fc" id="L95">          return true;</span>
+        }
+      }
+    }
+
+<span class="fc" id="L100">    return false;</span>
+  }
+
+  /**
+   * Set a new cell to the position of the map.
+   *
+   * @param row    the row of the map
+   * @param column the column of the map
+   * @param cell   the cell ready to be set
+   */
+  public void setNewCell(Row row, Column column, Cell cell) {
+<span class="fc" id="L111">    this.cell[row.ordinal()][column.ordinal()] = cell;</span>
+<span class="fc" id="L112">  }</span>
+
+  /**
+   * use the printer to print the map.
+   *
+   * @param printer the printer for printing the map
+   */
+  public void prettyPrint(ConsolePrinter printer) {
+<span class="fc" id="L120">    printer.toConsole(this);</span>
+<span class="fc" id="L121">  }</span>
+
+  /**
+   * {@inheritDoc}.
+   */
+  @Override
+  public boolean equals(Object obj) {
+<span class="fc bfc" id="L128" title="All 2 branches covered.">    if (this == obj) {</span>
+<span class="fc" id="L129">      return true;</span>
+    }
+<span class="fc bfc" id="L131" title="All 2 branches covered.">    if (!(obj instanceof BattleField)) {</span>
+<span class="fc" id="L132">      return false;</span>
+    }
+<span class="fc" id="L134">    BattleField that = (BattleField) obj;</span>
+<span class="fc bfc" id="L135" title="All 2 branches covered.">    for (Row row : Row.values()) {</span>
+<span class="fc bfc" id="L136" title="All 2 branches covered.">      for (Column column : Column.values()) {</span>
+<span class="fc" id="L137">        if (!this.cell[row.ordinal()][column.ordinal()].getClass()</span>
+<span class="fc bfc" id="L138" title="All 2 branches covered.">            .equals(that.cell[row.ordinal()][column.ordinal()].getClass())) {</span>
+<span class="fc" id="L139">          return false;</span>
+        }
+      }
+    }
+<span class="fc" id="L143">    return true;</span>
+  }
+
+  /**
+   * {@inheritDoc}.
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L151">    return Arrays.deepHashCode(getCell());</span>
+  }
+
+  /**
+   * {@inheritDoc}.
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L159">    return &quot;BattleField{&quot;</span>
+<span class="fc" id="L160">        + &quot;cell=&quot; + Arrays.toString(cell)</span>
+        + '}';
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

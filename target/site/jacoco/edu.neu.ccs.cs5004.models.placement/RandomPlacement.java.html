@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>RandomPlacement.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5004</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccs.cs5004.models.placement</a> &gt; <span class="el_source">RandomPlacement.java</span></div><h1>RandomPlacement.java</h1><pre class="source lang-java linenums">package edu.neu.ccs.cs5004.models.placement;
+
+import edu.neu.ccs.cs5004.models.Iplayer;
+import edu.neu.ccs.cs5004.models.Ship;
+import edu.neu.ccs.cs5004.models.cell.SpecificShipCell;
+import edu.neu.ccs.cs5004.models.map.Column;
+import edu.neu.ccs.cs5004.models.map.Row;
+import edu.neu.ccs.cs5004.models.player.HumanPlayer;
+import edu.neu.ccs.cs5004.view.Message;
+import edu.neu.ccs.cs5004.view.MyConsolePrinter;
+
+import java.io.IOException;
+
+/**
+ * Represents a RandomPlacement in our program.
+ */
+<span class="nc" id="L17">public class RandomPlacement extends Placement{</span>
+
+  /**
+   * Generates random ship placements for both DEBUG mode and GAME mode.
+   *
+   * @param player  the game player
+   * @param shipNum the total ship number
+   * @param ships   ship types
+   */
+  public void place(Iplayer player, Integer shipNum, Ship[] ships) throws IOException {
+
+<span class="nc" id="L28">    int index = 0;</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">    while (index &lt; shipNum) {</span>
+
+<span class="nc" id="L31">      Ship ship = ships[index];</span>
+<span class="nc" id="L32">      int size = ship.viewSize();</span>
+
+<span class="nc" id="L34">      String direction = player.directionRandomInput();</span>
+<span class="nc" id="L35">      Integer column = player.columnRandomInput(direction, size);</span>
+<span class="nc" id="L36">      Integer row = player.rowRandomInput(direction, size);</span>
+
+<span class="nc" id="L38">      int loop = 0;</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">      while (!player.canBePlaced(Row.values()[row - 1], Column.values()[column - 1],</span>
+<span class="nc" id="L40">          size, direction)) {</span>
+<span class="nc" id="L41">        direction = player.directionRandomInput();</span>
+<span class="nc" id="L42">        column = player.columnRandomInput(direction, size);</span>
+<span class="nc" id="L43">        row = player.rowRandomInput(direction, size);</span>
+<span class="nc" id="L44">        loop++;</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">        if (loop &gt; 1000) {</span>
+<span class="nc" id="L46">          System.out.println(Message.RESTART.getMessage());</span>
+<span class="nc" id="L47">          return;</span>
+        }
+      }
+
+<span class="nc" id="L51">      SpecificShipCell specificShipCell = player.convertToShipCell(ship);</span>
+<span class="nc" id="L52">      player.placeShipOnMap(Row.values()[row - 1], Column.values()[column - 1],</span>
+          specificShipCell, direction);
+
+<span class="nc" id="L55">      index++;</span>
+<span class="nc" id="L56">    }</span>
+
+<span class="nc" id="L58">    MyConsolePrinter printer = new MyConsolePrinter();</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">    if (player instanceof HumanPlayer) {</span>
+<span class="nc" id="L60">      System.out.println(Message.HUMAN_MAP.getMessage());</span>
+    } else {
+<span class="nc" id="L62">      System.out.println(Message.COMPUTER_MAP.getMessage());</span>
+    }
+<span class="nc" id="L64">    printer.toConsole(player.viewMap());</span>
+<span class="nc" id="L65">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

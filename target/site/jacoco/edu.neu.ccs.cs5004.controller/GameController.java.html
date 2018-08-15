@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>GameController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5004</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccs.cs5004.controller</a> &gt; <span class="el_source">GameController.java</span></div><h1>GameController.java</h1><pre class="source lang-java linenums">package edu.neu.ccs.cs5004.controller;
+
+import edu.neu.ccs.cs5004.models.Game;
+import edu.neu.ccs.cs5004.models.Iplayer;
+import edu.neu.ccs.cs5004.models.Ship;
+import edu.neu.ccs.cs5004.models.game.DebugMode;
+import edu.neu.ccs.cs5004.models.game.GameMode;
+import edu.neu.ccs.cs5004.models.placement.RandomPlacement;
+import edu.neu.ccs.cs5004.models.placement.UserPlacement;
+import edu.neu.ccs.cs5004.models.ship.Battleship;
+import edu.neu.ccs.cs5004.models.ship.Cruiser;
+import edu.neu.ccs.cs5004.models.ship.Destroyer;
+import edu.neu.ccs.cs5004.models.ship.Submarine;
+import edu.neu.ccs.cs5004.models.strategy.RandomStrategy;
+import edu.neu.ccs.cs5004.models.strategy.SmartStrategy;
+import edu.neu.ccs.cs5004.models.strategy.Strategy;
+import edu.neu.ccs.cs5004.models.strategy.UserStrategy;
+
+import edu.neu.ccs.cs5004.view.Message;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+/**
+ * Represents a GameController in our program.
+ */
+public class GameController {
+  private Game human;
+  private Game computer;
+
+  /**
+   * Creates a new GameController.
+   *
+   * @param human    the human game
+   * @param computer the computer game
+   */
+<span class="nc" id="L38">  public GameController(Game human, Game computer) {</span>
+<span class="nc" id="L39">    this.human = human;</span>
+<span class="nc" id="L40">    this.computer = computer;</span>
+<span class="nc" id="L41">  }</span>
+
+  /**
+   * Start the game.
+   *
+   * @param player  the human player
+   * @param player2 the computer player
+   */
+  public void gameStart(Iplayer player, Iplayer player2) throws IOException {
+<span class="nc" id="L50">    this.gameModeChoose(player, player2);</span>
+<span class="nc" id="L51">    this.gameStrategyChoose();</span>
+<span class="nc" id="L52">    this.gamePlay(player, player2);</span>
+<span class="nc" id="L53">  }</span>
+
+  /**
+   * Prompts user to choose strategy.
+   */
+  private void gameStrategyChoose() throws IOException {
+<span class="nc" id="L59">    String computer = Strategy.computerStrategyChoose();</span>
+<span class="nc" id="L60">    String human = Strategy.humanStrategyChoose();</span>
+
+<span class="nc bnc" id="L62" title="All 2 branches missed.">    if (computer.equals(Message.RANDOM.getMessage())) {</span>
+<span class="nc" id="L63">      this.computer.setIstrategy(new RandomStrategy());</span>
+    } else {
+<span class="nc" id="L65">      this.computer.setIstrategy(new SmartStrategy());</span>
+    }
+
+<span class="nc bnc" id="L68" title="All 2 branches missed.">    if (human.equals(Message.RANDOM.getMessage())) {</span>
+<span class="nc" id="L69">      this.human.setIstrategy(new RandomStrategy());</span>
+    } else {
+<span class="nc" id="L71">      this.human.setIstrategy(new UserStrategy());</span>
+    }
+<span class="nc" id="L73">  }</span>
+
+  /**
+   * Start game.
+   *
+   * @param iplayer  human player
+   * @param iplayer2 computer player
+   */
+  private void gamePlay(Iplayer iplayer, Iplayer iplayer2) throws IOException {
+<span class="nc" id="L82">    this.human.getIstrategy().strategyPlay(iplayer, iplayer2, this.human,</span>
+<span class="nc" id="L83">                                            this.computer.getIstrategy());</span>
+<span class="nc" id="L84">  }</span>
+
+  /**
+   * Prompts user to choose mode and ship placement.
+   *
+   * @param player  the human player
+   * @param player2 the computer player
+   */
+  private void gameModeChoose(Iplayer player, Iplayer player2) throws IOException {
+
+<span class="nc" id="L94">    String gameMode = &quot;&quot;;</span>
+
+<span class="nc bnc" id="L96" title="All 2 branches missed.">    while (!(gameMode.equals(Message.DEBUG.getMessage())</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">        || gameMode.equals(Message.GAME.getMessage()))) {</span>
+<span class="nc" id="L98">      Message.MODE_CHOOSE.printMessage();</span>
+<span class="nc" id="L99">      gameMode = GameController.readLine();</span>
+    }
+
+<span class="nc bnc" id="L102" title="All 2 branches missed.">    if (gameMode.equals(Message.GAME.getMessage())) {</span>
+<span class="nc" id="L103">      String placeShipWay = Game.placeShipWayChoose();</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">      while (!(placeShipWay.equals(Message.USER.getMessage())</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">          || placeShipWay.equals(Message.RANDOM.getMessage()))) {</span>
+<span class="nc" id="L106">        placeShipWay = Game.placeShipWayChoose();</span>
+      }
+
+<span class="nc bnc" id="L109" title="All 2 branches missed.">      if (placeShipWay.equals(Message.USER.getMessage())) {</span>
+<span class="nc" id="L110">        this.human = new GameMode(new UserPlacement(), null);</span>
+      } else {
+<span class="nc" id="L112">        this.human = new GameMode(new RandomPlacement(), null);</span>
+      }
+<span class="nc" id="L114">      this.computer = new GameMode(new RandomPlacement(), null);</span>
+<span class="nc" id="L115">      this.human.getPlacement().place(player, player.viewShips().length, player.viewShips());</span>
+<span class="nc" id="L116">      this.computer.getPlacement().place(player2, player2.viewShips().length, player2.viewShips());</span>
+<span class="nc" id="L117">    } else {</span>
+<span class="nc" id="L118">      String placeShipWay = Game.placeShipWayChoose();</span>
+<span class="nc bnc" id="L119" title="All 2 branches missed.">      while (!(placeShipWay.equals(Message.USER.getMessage())</span>
+<span class="nc bnc" id="L120" title="All 2 branches missed.">          || placeShipWay.equals(Message.RANDOM.getMessage()))) {</span>
+<span class="nc" id="L121">        placeShipWay = Game.placeShipWayChoose();</span>
+      }
+
+<span class="nc" id="L124">      Ship[] ships = DebugMode.generateShips();</span>
+<span class="nc" id="L125">      Ship[] ships1 = new Ship[ships.length];</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">      for (int i = 0; i &lt; ships.length; i++) {</span>
+<span class="nc bnc" id="L127" title="All 2 branches missed.">        if (ships[i] instanceof Battleship) {</span>
+<span class="nc" id="L128">          ships1[i] = new Battleship(4, 0);</span>
+<span class="nc bnc" id="L129" title="All 2 branches missed.">        } else if (ships[i] instanceof Cruiser) {</span>
+<span class="nc" id="L130">          ships1[i] = new Cruiser(3, 0);</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">        } else if (ships[i] instanceof Submarine) {</span>
+<span class="nc" id="L132">          ships1[i] = new Submarine(2, 0);</span>
+        } else {
+<span class="nc" id="L134">          ships1[i] = new Destroyer(1, 0);</span>
+        }
+      }
+<span class="nc bnc" id="L137" title="All 2 branches missed.">      if (placeShipWay.equals(Message.USER.getMessage())) {</span>
+<span class="nc" id="L138">        this.human = new DebugMode(new UserPlacement(), null);</span>
+      } else {
+<span class="nc" id="L140">        this.human = new DebugMode(new RandomPlacement(), null);</span>
+      }
+
+<span class="nc" id="L143">      this.computer = new DebugMode(new RandomPlacement(), null);</span>
+<span class="nc" id="L144">      this.human.getPlacement().place(player, ships.length, ships);</span>
+<span class="nc" id="L145">      this.computer.getPlacement().place(player2, ships.length, ships1);</span>
+    }
+<span class="nc" id="L147">  }</span>
+
+  /**
+   * Return a string input.
+   *
+   * @return a string input.
+   * @throws IOException throw an exception
+   */
+  public static String readLine() throws IOException {
+<span class="fc" id="L156">    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));</span>
+<span class="fc" id="L157">    return bufferedReader.readLine().toUpperCase();</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

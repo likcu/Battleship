@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>OpenSeaCell.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5004</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccs.cs5004.models.cell</a> &gt; <span class="el_source">OpenSeaCell.java</span></div><h1>OpenSeaCell.java</h1><pre class="source lang-java linenums">package edu.neu.ccs.cs5004.models.cell;
+
+import edu.neu.ccs.cs5004.models.Cell;
+import edu.neu.ccs.cs5004.view.ConsolePrinter;
+
+/**
+ * Represents a OpenSeaCell.
+ */
+public class OpenSeaCell extends AbstractWaterCell {
+
+  /**
+   * Create a new OpenSeaCell.
+   *
+   * @param isHit if the OpenSeaCell was or was not hit
+   */
+  public OpenSeaCell(Boolean isHit) {
+<span class="fc" id="L17">    super(isHit);</span>
+<span class="fc" id="L18">  }</span>
+
+  /**
+   * Returns if the OpenSeaCell can be placed with a ship.
+   *
+   * @return if the OpenSeaCell can be placed with a ship
+   */
+  @Override
+  public Boolean placeShipOnCell() {
+<span class="fc" id="L27">    return true;</span>
+  }
+
+  /**
+   * Returns an attacked OpenSeaCell.
+   *
+   * @return an attacked OpenSeaCell
+   */
+  @Override
+  public Cell attackCell() {
+<span class="fc" id="L37">    return new OpenSeaCell(true);</span>
+  }
+
+  /**
+   * Use the printer to print the OpenSeaCell.
+   *
+   * @param printer the ConsolePrinter object
+   */
+  @Override
+  public void prettyPrint(ConsolePrinter printer) {
+<span class="fc" id="L47">    printer.toConsole(this);</span>
+<span class="fc" id="L48">  }</span>
+
+  /**
+   * {@inheritDoc}.
+   */
+  @Override
+  public boolean equals(Object obj) {
+<span class="fc" id="L55">    return super.equals(obj);</span>
+  }
+
+  /**
+   * {@inheritDoc}.
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L63">    return super.hashCode();</span>
+  }
+
+  /**
+   * {@inheritDoc}.
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L71">    return &quot;OpenSeaCell{&quot; + &quot;isHit=&quot; + viewIsHit() + '}';</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

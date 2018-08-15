@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Message.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5004</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccs.cs5004.view</a> &gt; <span class="el_source">Message.java</span></div><h1>Message.java</h1><pre class="source lang-java linenums">package edu.neu.ccs.cs5004.view;
+
+/**
+ * Represents all the message in our program.
+ */
+<span class="pc" id="L6">public enum Message {</span>
+
+<span class="fc" id="L8">  TEN(&quot;10&quot;),</span>
+
+<span class="fc" id="L10">  MODE_CHOOSE(&quot;Choose your mode: DEBUG mode or GAME mode&quot;),</span>
+<span class="fc" id="L11">  DEBUG(&quot;DEBUG&quot;),</span>
+<span class="fc" id="L12">  GAME(&quot;GAME&quot;),</span>
+<span class="fc" id="L13">  USER(&quot;USER&quot;),</span>
+<span class="fc" id="L14">  RANDOM(&quot;RANDOM&quot;),</span>
+<span class="fc" id="L15">  SMART(&quot;SMART&quot;),</span>
+
+<span class="fc" id="L17">  TOTAL_SHIPNUM(&quot;Input the total number of ships you want to have: 1-10: &quot;),</span>
+
+<span class="fc" id="L19">  SHIPTYPE_CHOOSE(&quot;Choose your type of ship BATTLESHIP, CRUISER, SUBMARINE, DESTROYER: &quot;),</span>
+<span class="fc" id="L20">  B(&quot;BATTLESHIP&quot;),</span>
+<span class="fc" id="L21">  C(&quot;CRUISER&quot;),</span>
+<span class="fc" id="L22">  S(&quot;SUBMARINE&quot;),</span>
+<span class="fc" id="L23">  D(&quot;DESTROYER&quot;),</span>
+<span class="fc" id="L24">  VERTICAL(&quot;VERTICAL&quot;),</span>
+<span class="fc" id="L25">  HORIZONTAL(&quot;HORIZONTAL&quot;),</span>
+
+<span class="fc" id="L27">  SPECIFIC_SHIPNUM(&quot;Input the number of the &quot;),</span>
+
+<span class="fc" id="L29">  SHIPNUM_WARNING(&quot;The number of ship should be 1-10.&quot;),</span>
+<span class="fc" id="L30">  TOTAL_SHIPNUM_EXCEEDS(&quot;Your total number of ships exceeds! &quot;</span>
+      + &quot;Message a number less than or equal to &quot; ),
+<span class="fc" id="L32">  CURRENT_SHIPNUM(&quot;The current total number of ships is: &quot;),</span>
+
+<span class="fc" id="L34">  RESTART(&quot;invalid debug pattern, you need to restart.&quot;),</span>
+<span class="fc" id="L35">  HUMAN_MAP(&quot;Human player map:&quot;),</span>
+<span class="fc" id="L36">  COMPUTER_MAP(&quot;Computer map:&quot;),</span>
+<span class="fc" id="L37">  CURRENT_SHIP(&quot;current ship: &quot;),</span>
+<span class="fc" id="L38">  CONFIRM(&quot;Confirmed (Y/N)? direction: &quot;),</span>
+<span class="fc" id="L39">  YES(&quot;Y&quot;),</span>
+<span class="fc" id="L40">  NO(&quot;N&quot;),</span>
+<span class="fc" id="L41">  CONFIRM_ROW(&quot;, column: &quot;),</span>
+<span class="fc" id="L42">  CONFIRM_CONLUMN(&quot;, row: &quot;),</span>
+<span class="fc" id="L43">  DENIED(&quot;cannot place here or denied. set the &quot;),</span>
+
+<span class="fc" id="L45">  DIRECTION(&quot;direction: &quot;),</span>
+<span class="fc" id="L46">  COLUMN(&quot;column: &quot;),</span>
+<span class="fc" id="L47">  ROW(&quot;row: &quot;),</span>
+<span class="fc" id="L48">  WRONG_COLUMN(&quot;column should be A-J&quot;),</span>
+<span class="fc" id="L49">  WRONG_ROW(&quot;row should be 1-10&quot;),</span>
+<span class="fc" id="L50">  CHECK_DIRECTION(&quot;direction should be either vertical or horizontal&quot;),</span>
+<span class="fc" id="L51">  ROW_GUESS(&quot;Make your row guess 1-10: &quot;),</span>
+<span class="fc" id="L52">  COLUMN_GUESS(&quot;Make your column guess A-J: &quot;),</span>
+
+<span class="fc" id="L54">  GAME_OVER(&quot;Game over, the winner is &quot;),</span>
+<span class="fc" id="L55">  TURN(&quot; turn: &quot;),</span>
+<span class="fc" id="L56">  BATTLEMAP(&quot; battle map: &quot;),</span>
+<span class="fc" id="L57">  FLEETMAP(&quot; fleet map: &quot;),</span>
+
+<span class="fc" id="L59">  COMPUTER_STRATEGY(&quot;Choose strategy for Computer: SMART strategy or RANDOM strategy&quot;),</span>
+<span class="fc" id="L60">  HUMAN_STRATEGY(&quot;Choose strategy for Human: USER strategy or RANDOM strategy&quot;);</span>
+
+
+  private String message;
+
+<span class="fc" id="L65">  Message(String message) {</span>
+<span class="fc" id="L66">    this.message = message;</span>
+<span class="fc" id="L67">  }</span>
+
+  public String getMessage() {
+
+<span class="fc" id="L71">    return this.message;</span>
+  }
+
+  public void printMessage() {
+
+<span class="nc" id="L76">    System.out.println(this.message);</span>
+<span class="nc" id="L77">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
